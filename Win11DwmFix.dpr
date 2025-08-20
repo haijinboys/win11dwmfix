@@ -17,7 +17,7 @@ uses
   Winapi.Messages;
 
 resourcestring
-  SName = 'Win11ShowWindowFix';
+  SName = 'Win11DwmFix';
   SVersion = '1.0.0';
 
 const
