@@ -5,7 +5,7 @@ Windows 11 環境において、Win32 アプリケーションのウィンドウ
 ## 特徴
 
 - DLL を LoadLibrary するだけで、アプリに簡単に適用できます。
-- Mery のプラグインとしても使用できます。
+- [Mery](https://www.haijin-boys.com/) のプラグインとしても使用できます。
 
 ## 環境
 
@@ -35,7 +35,7 @@ HMODULE hModule = LoadLibrary(L"Win11DwmFix.dll");
 
 **Mery のプラグインとして使用する場合**
 1. アーカイブを展開し、`Win11DwmFix.dll` を `Mery.exe` のインストール先の `Plugins` フォルダーにコピーしてください。
-2. Mery を起動すると、自動的に適用されます。
+2. [Mery](https://www.haijin-boys.com/) を起動すると、自動的に適用されます。
 
 ## 注意事項
 
