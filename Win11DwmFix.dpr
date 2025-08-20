@@ -5,7 +5,7 @@
 
 library Win11DwmFix;
 
-{$R 'Resource.res' 'Resource.rc'}
+{$R 'mPlugin.res' 'mPlugin.rc'}
 
 {$IFDEF DEBUG}
 {$R *.res}
