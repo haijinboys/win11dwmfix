@@ -50,7 +50,7 @@ function IndexOfHWND(hwnd: HWND): Integer;
 var
   I: Integer;
 begin
-  for i := 0 to Length(FNcPaint) - 1 do
+  for I := 0 to Length(FNcPaint) - 1 do
     if FNcPaint[I] = hwnd then
       Exit(I);
   Result := -1;
@@ -75,15 +75,12 @@ begin
   if Code = HC_ACTION then
     case Msg.message of
       WM_SHOWWINDOW:
-        if (Msg.wParam <> 0) and ((GetWindowLong(Msg.hwnd, GWL_STYLE) and WS_CHILD) = 0) then
+        if (Msg.wParam <> 0) and ((GetWindowLong(Msg.hwnd, GWL_STYLE) and WS_CHILD) = 0) and (IndexOfHWND(Msg.hwnd) < 0) then
         begin
-          if IndexOfHWND(Msg.hwnd) < 0 then
-          begin
-            LAttribute := True;
-            DwmSetWindowAttribute(Msg.hwnd, DWMWA_ALLOW_NCPAINT, @LAttribute, SizeOf(LAttribute));
-            SetLength(FNcPaint, Length(FNcPaint) + 1);
-            FNcPaint[Length(FNcPaint) - 1] := Msg.hwnd;
-          end;
+          LAttribute := True;
+          DwmSetWindowAttribute(Msg.hwnd, DWMWA_ALLOW_NCPAINT, @LAttribute, SizeOf(LAttribute));
+          SetLength(FNcPaint, Length(FNcPaint) + 1);
+          FNcPaint[Length(FNcPaint) - 1] := Msg.hwnd;
         end;
       WM_NCPAINT:
         begin
@@ -186,7 +183,8 @@ begin
   //
 end;
 
-function PluginProc(hwnd: HWND; nMsg: Cardinal; wParam: WPARAM; lParam: LPARAM): LRESULT; stdcall;
+function PluginProc(hwnd: HWND; nMsg: Cardinal; wParam: WPARAM;
+  lParam: LPARAM): LRESULT; stdcall;
 begin
   Result := 0;
   case nMsg of
