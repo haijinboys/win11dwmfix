@@ -18,7 +18,7 @@ uses
 
 resourcestring
   SName = 'Win11DwmFix';
-  SVersion = '1.0.0';
+  SVersion = '1.0.1';
 
 const
   IDS_TEXT = 1;
